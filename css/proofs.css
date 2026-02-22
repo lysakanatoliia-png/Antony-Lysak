@@ -1,0 +1,9 @@
+.proofs { background: var(--color-bg); }
+.proofs__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.proof-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; transition: border-color var(--transition-base); }
+.proof-card:hover { border-color: var(--color-accent); }
+.proof-card__header { display: flex; align-items: center; gap: 0.875rem; }
+.proof-card__avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2)); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs); font-weight: 700; flex-shrink: 0; }
+.proof-card__header strong { display: block; font-size: var(--text-sm); font-weight: 600; }
+.proof-card__header span { font-size: var(--text-xs); color: var(--color-text-muted); }
+.proof-card p { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.7; font-style: italic; }
