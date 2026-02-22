@@ -1,0 +1,13 @@
+.problem { background: var(--color-bg-card); }
+.problem__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.problem-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+.problem-card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+.problem-card__icon { font-size: 2rem; margin-bottom: 1rem; }
+.problem-card h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: 0.75rem; }
+.problem-card p { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.7; }
