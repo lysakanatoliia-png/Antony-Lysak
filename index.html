@@ -1,363 +1,317 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antony Lysak — Structure instead of chaos</title>
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/problem.css" />
-  <link rel="stylesheet" href="css/framework.css" />
-  <link rel="stylesheet" href="css/howwework.css" />
-  <link rel="stylesheet" href="css/proofs.css" />
-  <link rel="stylesheet" href="css/numbers.css" />
-  <link rel="stylesheet" href="css/about.css" />
-  <link rel="stylesheet" href="css/faq.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/burger.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    img{max-width:100%;display:block}button{font-family:inherit;cursor:pointer}a{text-decoration:none}ul{list-style:none}
+    :root{--bg:#130921;--bg-2:#1A0D2E;--bg-card:rgba(255,255,255,.04);--border:rgba(255,255,255,.08);--border-h:rgba(255,255,255,.18);--orange:#FF6B35;--pink:#E8385A;--gr:linear-gradient(90deg,#FF6B35 0%,#E8385A 100%);--gr135:linear-gradient(135deg,#FF6B35 0%,#E8385A 100%);--logo-bg:#3D1568;--muted:rgba(255,255,255,.55);--muted2:rgba(255,255,255,.35);--font:'Inter',-apple-system,sans-serif;--r:12px;--rs:8px;--ease:.3s ease;--c:1200px}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:#fff;overflow-x:hidden;line-height:1.5}
+    .container{max-width:var(--c);margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+    .h2{font-size:clamp(30px,4vw,54px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:#fff;margin-bottom:48px}
+    .h2 .gr{background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);font-size:15px;font-weight:600;transition:var(--ease);border:none;white-space:nowrap}
+    .btn-p{background:var(--gr);color:#fff;box-shadow:0 4px 28px rgba(232,56,90,.35)}
+    .btn-p:hover{opacity:.88;transform:translateY(-2px)}
+    .btn-o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+    .btn-o:hover{border-color:rgba(255,255,255,.6)}
+    .btn-f{width:100%;justify-content:center}
+    .header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(19,9,33,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background var(--ease)}
+    .header.sc{background:rgba(19,9,33,.98)}
+    .h-in{max-width:var(--c);margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:36px}
+    .logo{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:var(--logo-bg);border-radius:var(--rs);font-size:20px;font-weight:800;letter-spacing:-1px;color:#fff;flex-shrink:0}
+    .logo .lo{color:var(--orange)}
+    .nav{display:flex;align-items:center;gap:28px;flex:1}
+    .nav a{color:var(--muted);font-size:14px;font-weight:500;position:relative;transition:color var(--ease)}
+    .nav a:hover{color:#fff}
+    .nav a.act{color:#fff;font-weight:600}
+    .nav a.act::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gr);border-radius:2px}
+    .lang{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--border);color:var(--muted);font-size:13px;padding:6px 12px;border-radius:20px;transition:var(--ease);margin-left:auto}
+    .lang:hover{border-color:var(--border-h);color:#fff}
+    .brg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;margin-left:auto}
+    .brg span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+    .mob{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1)}
+    .mob.open{transform:translateX(0)}
+    .mob-x{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:28px;line-height:1}
+    .mob a{color:#fff;font-size:26px;font-weight:700;transition:color var(--ease)}
+    .mob a:hover,.mob a.act{color:var(--orange)}
+    .hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding-top:72px}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 75% 50%,rgba(110,30,170,.55) 0%,rgba(60,8,100,.3) 45%,transparent 70%),radial-gradient(ellipse 50% 60% at 20% 90%,rgba(180,40,70,.18) 0%,transparent 55%),#130921}
+    .hero-img{position:absolute;right:0;bottom:0;height:100%;max-height:100vh;width:auto;max-width:58%;object-fit:cover;object-position:top center;pointer-events:none}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(19,9,33,.92) 0%,rgba(19,9,33,.65) 42%,rgba(19,9,33,.15) 65%,transparent 80%),linear-gradient(to top,rgba(19,9,33,.85) 0%,transparent 35%)}
+    .hero-ct{position:relative;z-index:2;max-width:var(--c);margin:0 auto;padding:0 24px 88px;width:100%}
+    .hero-q{max-width:540px;font-size:15px;font-style:italic;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:22px}
+    .hero-ln{width:100%;max-width:540px;height:1px;background:rgba(255,255,255,.12);margin-bottom:36px}
+    .hero-t{font-size:clamp(52px,8vw,104px);font-weight:900;line-height:.95;letter-spacing:-3px;color:#fff;margin-bottom:20px}
+    .hero-s{font-size:17px;font-weight:600;background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:40px;max-width:440px}
+    .fw{padding:100px 0;background:var(--bg)}
+    .fw-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .fw-c{padding:32px 28px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background var(--ease)}
+    .fw-c:hover{background:rgba(255,255,255,.04)}
+    .fw-c:nth-child(3n){border-right:none}
+    .fw-c:nth-last-child(-n+3){border-bottom:none}
+    .fw-n{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--orange);margin-bottom:12px}
+    .fw-i{font-size:22px;margin-bottom:14px}
+    .fw-c h3{font-size:17px;font-weight:700;margin-bottom:10px}
+    .fw-c p{font-size:13px;color:var(--muted);line-height:1.65}
+    .hw{padding:100px 0;background:var(--bg-2)}
+    .hw-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .hw-c{padding:44px 40px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:border-color var(--ease)}
+    .hw-c:hover{border-color:var(--border-h)}
+    .hw-ca{border-color:rgba(255,107,53,.3);background:rgba(255,107,53,.04)}
+    .hw-st{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+    .hw-c h3{font-size:26px;font-weight:800;margin-bottom:16px;letter-spacing:-.5px}
+    .hw-c>p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px}
+    .hw-l{display:flex;flex-direction:column;gap:10px;margin-bottom:36px}
+    .hw-l li{display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.8);line-height:1.5}
+    .hw-l li::before{content:'✓';color:var(--orange);font-weight:800;flex-shrink:0}
+    .pr{padding:100px 0;background:var(--bg)}
+    .pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .pr-c{padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:border-color var(--ease)}
+    .pr-c:hover{border-color:var(--border-h)}
+    .pr-st{color:var(--orange);font-size:13px;letter-spacing:2px;margin-bottom:16px}
+    .pr-tx{font-size:15px;font-style:italic;color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:24px}
+    .pr-au{display:flex;align-items:center;gap:12px}
+    .pr-av{width:44px;height:44px;border-radius:50%;background:var(--gr135);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+    .pr-nm{font-size:14px;font-weight:700}
+    .pr-ro{font-size:12px;color:var(--muted);margin-top:2px}
+    .nb{padding:80px 0;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .nb-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden}
+    .nb-c{padding:36px 20px;background:var(--bg);text-align:center}
+    .nb-v{display:block;font-size:clamp(28px,4vw,48px);font-weight:900;background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-1px}
+    .nb-l{font-size:12px;color:var(--muted);line-height:1.4}
+    .ab{padding:100px 0;background:var(--bg-2)}
+    .ab-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+    .ab-pw{position:relative;border-radius:var(--r);overflow:hidden}
+    .ab-ph{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:var(--r)}
+    .ab-pp{width:100%;aspect-ratio:3/4;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:72px;font-weight:900;color:rgba(255,255,255,.06)}
+    .ab-sub{font-size:17px;font-weight:600;background:var(--gr);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:28px}
+    .ab p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+    .soc{display:flex;gap:10px;margin-top:32px}
+    .sb{width:44px;height:44px;border:1.5px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:700;transition:var(--ease)}
+    .sb:hover{border-color:var(--orange);color:var(--orange)}
+    .fq{padding:100px 0;background:var(--bg)}
+    .fq-l{max-width:760px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .fq-i+.fq-i{border-top:1px solid var(--border)}
+    .fq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;background:none;border:none;color:#fff;font-size:16px;font-weight:600;text-align:left;transition:background var(--ease)}
+    .fq-q:hover{background:rgba(255,255,255,.04)}
+    .fq-ic{flex-shrink:0;width:26px;height:26px;border:1.5px solid rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center;font-size:18px;transition:var(--ease)}
+    .fq-i.open .fq-ic{transform:rotate(45deg);border-color:var(--orange);color:var(--orange)}
+    .fq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    .fq-i.open .fq-a{max-height:300px}
+    .fq-a p{padding:0 28px 24px;font-size:15px;color:var(--muted);line-height:1.7}
+    .ct{padding:100px 0;background:var(--bg-2)}
+    .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .ct-l p{font-size:16px;color:var(--muted);line-height:1.75;margin-top:16px}
+    .ct-f{display:flex;flex-direction:column;gap:18px}
+    .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fg{display:flex;flex-direction:column;gap:7px}
+    .fg label{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--muted);text-transform:uppercase}
+    .fg input,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:13px 16px;color:#fff;font-size:15px;font-family:var(--font);outline:none;resize:vertical;transition:var(--ease)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--muted2)}
+    .fg input:focus,.fg textarea:focus{border-color:var(--orange);background:rgba(255,107,53,.05)}
+    #ty{display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px;background:var(--bg)}
+    #ty.show{display:flex}
+    .ty-ck{width:64px;height:64px;border-radius:50%;background:rgba(255,107,53,.12);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--orange);margin-bottom:32px}
+    .ty-t{font-size:clamp(40px,6vw,72px);font-weight:900;color:#fff;letter-spacing:-2px;margin-bottom:16px}
+    .ty-s{font-size:18px;color:var(--orange);max-width:460px;line-height:1.6}
+    .ft{background:var(--bg);border-top:1px solid var(--border);padding:52px 24px 32px}
+    .ft-in{max-width:var(--c);margin:0 auto}
+    .ft-top{display:flex;align-items:center;gap:36px;margin-bottom:40px;flex-wrap:wrap}
+    .ft-nav{display:flex;gap:24px;flex:1;flex-wrap:wrap}
+    .ft-nav a{color:var(--muted);font-size:14px;transition:color var(--ease)}
+    .ft-nav a:hover{color:#fff}
+    .ft-soc{display:flex;gap:10px;margin-left:auto}
+    .ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted2);flex-wrap:wrap;gap:8px}
+    @media(max-width:1024px){.fw-grid{grid-template-columns:repeat(2,1fr)}.pr-grid{grid-template-columns:repeat(2,1fr)}.nb-grid{grid-template-columns:repeat(3,1fr)}.ab-grid{grid-template-columns:1fr;gap:48px}.ct-grid{grid-template-columns:1fr;gap:48px}}
+    @media(max-width:768px){.nav,.lang{display:none}.brg{display:flex}.hero-img{max-width:100%;opacity:.35}.hw-grid{grid-template-columns:1fr}.fw-grid{grid-template-columns:1fr}.pr-grid{grid-template-columns:1fr}.nb-grid{grid-template-columns:repeat(2,1fr)}.fr{grid-template-columns:1fr}.ft-bot{flex-direction:column;text-align:center}}
+  </style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="header" id="header">
-    <div class="container">
-      <a href="#" class="logo">AL<span class="logo-dot">.</span></a>
-      <nav class="nav" id="nav">
-        <a href="#home" class="nav__link">Home</a>
-        <a href="#offers" class="nav__link">Top Offers</a>
-        <a href="#framework" class="nav__link">Points</a>
-        <a href="#about" class="nav__link">About</a>
-        <a href="#faq" class="nav__link">FAQ</a>
-        <a href="#contact" class="nav__link">Contact</a>
-      </nav>
-      <a href="#contact" class="btn btn--primary header__cta">Book a Call</a>
-      <button class="burger" id="burgerBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- BURGER MENU -->
-  <div class="burger-menu" id="burgerMenu">
-    <button class="burger-menu__close" id="burgerClose">✕</button>
-    <nav class="burger-menu__nav">
-      <a href="#home" class="burger-menu__link">Home</a>
-      <a href="#offers" class="burger-menu__link">Top Offers</a>
-      <a href="#framework" class="burger-menu__link">Points</a>
-      <a href="#about" class="burger-menu__link">About</a>
-      <a href="#faq" class="burger-menu__link">FAQ</a>
-      <a href="#contact" class="burger-menu__link">Contact</a>
+<header class="header" id="header">
+  <div class="h-in">
+    <a href="#hero" class="logo">A<span class="lo">L</span></a>
+    <nav class="nav">
+      <a href="#method" class="act">Method</a>
+      <a href="#services">Services</a>
+      <a href="#proofs">Proofs</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="btn btn--primary burger-menu__cta">Book a Call</a>
+    <button class="lang" id="langBtn">🇬🇧 EN ▾</button>
+    <button class="brg" id="brgBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero__content">
-          <p class="hero__label">Business Consultant</p>
-          <h1 class="hero__title">Structure<br/><span class="hero__accent">instead of</span><br/>chaos</h1>
-          <p class="hero__desc">I help founders and CEOs build systems that scale — without burning out their teams or themselves.</p>
-          <div class="hero__actions">
-            <a href="#contact" class="btn btn--primary">Book a Call</a>
-            <a href="#framework" class="btn btn--outline">See How It Works</a>
-          </div>
+</header>
+<div class="mob" id="mob">
+  <button class="mob-x" id="mobX">✕</button>
+  <a href="#method" class="act" onclick="closeMob()">Method</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#proofs" onclick="closeMob()">Proofs</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#contact" class="btn btn-p" onclick="closeMob()">Start AI Screening →</a>
+</div>
+<main id="mc">
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <img src="images/hero-photo.jpg" alt="Antony Lysak" class="hero-img" onerror="this.style.display='none'">
+    <div class="hero-ov"></div>
+    <div class="hero-ct">
+      <p class="hero-q">"Я допомагаю власникам сервісних бізнесів перейти від ручного керування до системи, де процеси вимірювані, команда самостійна, а прибуток передбачуваний."</p>
+      <div class="hero-ln"></div>
+      <h1 class="hero-t">Structure<br>Instead of chaos</h1>
+      <p class="hero-s">90-Day Roadmap to Scale Your Service Business</p>
+      <a href="#contact" class="btn btn-p">Start AI Screening →</a>
+    </div>
+  </section>
+  <section class="fw" id="method">
+    <div class="container">
+      <span class="tag">Operating Framework</span>
+      <h2 class="h2">6 pillars of a<br><span class="gr">scalable business</span></h2>
+      <div class="fw-grid">
+        <div class="fw-c"><div class="fw-n">01</div><div class="fw-i">📦</div><h3>Product — Profit</h3><p>Packaging your expertise into a clear, scalable offer that generates consistent and predictable revenue.</p></div>
+        <div class="fw-c"><div class="fw-n">02</div><div class="fw-i">📣</div><h3>Marketing — Scaling</h3><p>Building authority in your niche through consistent positioning and content systems that attract ideal clients.</p></div>
+        <div class="fw-c"><div class="fw-n">03</div><div class="fw-i">💰</div><h3>Sales — Wholesale</h3><p>Converting leads predictably at scale — from first touch to closed contracts without the hustle.</p></div>
+        <div class="fw-c"><div class="fw-n">04</div><div class="fw-i">⚙️</div><h3>Premium — Operational</h3><p>A 90-day roadmap with clear milestones, KPIs, and operational decision checkpoints for every stage.</p></div>
+        <div class="fw-c"><div class="fw-n">05</div><div class="fw-i">🤝</div><h3>Discovery — Team</h3><p>Building a self-managing team and strategic alliances that unlock new markets without burning you out.</p></div>
+        <div class="fw-c"><div class="fw-n">06</div><div class="fw-i">🚀</div><h3>Promotion — Partner</h3><p>Legal foundation, IP protection, and partnership channels that create compounding, scalable growth.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="hw" id="services">
+    <div class="container">
+      <span class="tag">How We'll Work Together</span>
+      <h2 class="h2">Two steps to<br><span class="gr">transformation</span></h2>
+      <div class="hw-grid">
+        <div class="hw-c hw-ca">
+          <div class="hw-st">Step 01</div>
+          <h3>AI Business Screening</h3>
+          <p>An automated diagnostic that maps your current business state — gaps, blockers, and opportunities — before we ever speak.</p>
+          <ul class="hw-l"><li>20-minute structured questionnaire</li><li>AI-powered analysis of your answers</li><li>Personalized gap report delivered instantly</li><li>Priority areas identified before our call</li></ul>
+          <a href="#contact" class="btn btn-p">Start AI Screening →</a>
         </div>
-        <div class="hero__visual">
-          <div class="hero__photo-wrap">
-            <img src="images/hero-photo.jpg" alt="Antony Lysak" class="hero__photo" onerror="this.style.display='none'"/>
-            <div class="hero__photo-placeholder">AL</div>
-          </div>
-          <div class="hero__glow"></div>
+        <div class="hw-c">
+          <div class="hw-st">Step 02</div>
+          <h3>Discovery Call</h3>
+          <p>A focused 60-minute strategy session where we review your screening results and map your 90-day roadmap together.</p>
+          <ul class="hw-l"><li>Review your AI screening results together</li><li>Identify the #1 constraint holding you back</li><li>Build a clear 90-day action roadmap</li><li>Decide if we're the right fit to work together</li></ul>
+          <a href="#contact" class="btn btn-o">Book Discovery Call</a>
         </div>
       </div>
-    </section>
-
-    <!-- THE CORE PROBLEM -->
-    <section class="problem" id="problem">
-      <div class="container">
-        <span class="section-label">The Core Problem</span>
-        <h2 class="section-title">Why most businesses<br/>stay stuck</h2>
-        <div class="problem__grid">
-          <div class="problem-card">
-            <div class="problem-card__icon">⚡</div>
-            <h3>No clear strategy</h3>
-            <p>Running on autopilot without a defined direction leads to wasted resources and missed opportunities.</p>
-          </div>
-          <div class="problem-card">
-            <div class="problem-card__icon">🔄</div>
-            <h3>Chaotic processes</h3>
-            <p>Every team member works differently. No systems, no documentation, no scalability.</p>
-          </div>
-          <div class="problem-card">
-            <div class="problem-card__icon">📉</div>
-            <h3>Weak monetization</h3>
-            <p>Great product, poor packaging. Your offer doesn't reflect the real value you deliver.</p>
-          </div>
+    </div>
+  </section>
+  <section class="pr" id="proofs">
+    <div class="container">
+      <span class="tag">Proofs</span>
+      <h2 class="h2">Real results,<br><span class="gr">real clients</span></h2>
+      <div class="pr-grid">
+        <div class="pr-c"><div class="pr-st">★★★★★</div><p class="pr-tx">"Antony helped us restructure our entire operations in 6 weeks. Revenue went up 40% in the first quarter after implementation."</p><div class="pr-au"><div class="pr-av">TG</div><div><div class="pr-nm">Tina G.</div><div class="pr-ro">Founder, Operations CEO · $2.5M</div></div></div></div>
+        <div class="pr-c"><div class="pr-st">★★★★★</div><p class="pr-tx">"The framework gave us clarity we never had before. We closed our first $1M deal 3 months after the bootcamp."</p><div class="pr-au"><div class="pr-av">MK</div><div><div class="pr-nm">Mark K.</div><div class="pr-ro">CEO, Tech Startup</div></div></div></div>
+        <div class="pr-c"><div class="pr-st">★★★★★</div><p class="pr-tx">"I finally stopped being the bottleneck in my own business. The systems Antony built allowed me to take a real vacation."</p><div class="pr-au"><div class="pr-av">SR</div><div><div class="pr-nm">Sofia R.</div><div class="pr-ro">Creative Director</div></div></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="nb">
+    <div class="container">
+      <span class="tag" style="display:block;margin-bottom:40px">Numbers That Matter</span>
+      <div class="nb-grid">
+        <div class="nb-c"><span class="nb-v">20+</span><span class="nb-l">Years in business</span></div>
+        <div class="nb-c"><span class="nb-v">100+</span><span class="nb-l">Clients helped</span></div>
+        <div class="nb-c"><span class="nb-v">$1M+</span><span class="nb-l">Revenue generated</span></div>
+        <div class="nb-c"><span class="nb-v">90</span><span class="nb-l">Day avg. transformation</span></div>
+        <div class="nb-c"><span class="nb-v">$1.5–2M</span><span class="nb-l">Client deals closed</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="ab" id="about">
+    <div class="container">
+      <div class="ab-grid">
+        <div class="ab-pw">
+          <img src="images/about-photo.jpg" alt="Antony Lysak" class="ab-ph" onerror="this.style.display='none';document.getElementById('abPh').style.display='flex'">
+          <div class="ab-pp" id="abPh" style="display:none">AL</div>
+        </div>
+        <div>
+          <span class="tag">About</span>
+          <h2 class="h2">Antony Lysak</h2>
+          <p class="ab-sub">Business architect · 20+ years scaling companies from chaos to clarity</p>
+          <p>I've built and scaled businesses across multiple industries — from tech startups to creative agencies. I know what it takes to go from founder-mode to CEO-mode, and I've helped over 100 companies make that transition.</p>
+          <p>My approach is simple: diagnose the real problem, build the right systems, and execute with precision. No fluff, no generic advice — just a clear path forward.</p>
+          <p>Every engagement starts with an AI screening so I understand your business before we ever speak.</p>
+          <div class="soc"><a href="#" class="sb">in</a><a href="#" class="sb">TG</a><a href="#" class="sb">IG</a></div>
         </div>
       </div>
-    </section>
-
-    <!-- OPERATING FRAMEWORK -->
-    <section class="framework" id="framework">
-      <div class="container">
-        <span class="section-label">Operating Framework</span>
-        <h2 class="section-title">6 pillars of a<br/>scalable business</h2>
-        <div class="framework__grid">
-          <div class="framework-card">
-            <div class="framework-card__num">01</div>
-            <h3>Product</h3>
-            <p>Packaging your expertise into a clear, scalable offer that sells itself.</p>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__num">02</div>
-            <h3>Branding</h3>
-            <p>Building authority and recognition in your niche through consistent positioning.</p>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__num">03</div>
-            <h3>Scaling</h3>
-            <p>Systems and processes that grow with you — not against you.</p>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__num">04</div>
-            <h3>Strategy</h3>
-            <p>A 90-day roadmap with clear milestones, KPIs and decision checkpoints.</p>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__num">05</div>
-            <h3>Partnerships</h3>
-            <p>Strategic alliances that open doors to new markets and distribution channels.</p>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__num">06</div>
-            <h3>Operations/Rights</h3>
-            <p>Legal foundation, IP protection and operational efficiency at every stage.</p>
-          </div>
-        </div>
+    </div>
+  </section>
+  <section class="fq" id="faq">
+    <div class="container">
+      <span class="tag">FAQ</span>
+      <h2 class="h2">Frequently asked<br><span class="gr">questions</span></h2>
+      <div class="fq-l">
+        <div class="fq-i"><button class="fq-q">Who is this for? <span class="fq-ic">+</span></button><div class="fq-a"><p>This is for founders, CEOs and business owners who are generating revenue but feel stuck — overwhelmed by operations, unclear on strategy, or unable to scale past their current ceiling.</p></div></div>
+        <div class="fq-i"><button class="fq-q">How long does the program take? <span class="fq-ic">+</span></button><div class="fq-a"><p>The Structured Bootcamp runs for 8 weeks with weekly sessions. The Discovery Call is a focused 60-minute session. Both include follow-up materials and full session recordings.</p></div></div>
+        <div class="fq-i"><button class="fq-q">What results can I expect? <span class="fq-ic">+</span></button><div class="fq-a"><p>Most clients see clarity within the first 2 weeks and measurable revenue impact within 90 days. Our average client sees 30–50% operational efficiency gains.</p></div></div>
+        <div class="fq-i"><button class="fq-q">How do we work together? <span class="fq-ic">+</span></button><div class="fq-a"><p>Everything is remote — video calls via Zoom, async communication via Telegram. You'll get shared docs, frameworks, and recordings of all sessions.</p></div></div>
+        <div class="fq-i"><button class="fq-q">What's the investment? <span class="fq-ic">+</span></button><div class="fq-a"><p>Investment varies based on engagement model and scope. Complete the AI Screening first — then we'll build a proposal tailored specifically to your situation.</p></div></div>
       </div>
-    </section>
-
-    <!-- HOW WE'LL WORK TOGETHER -->
-    <section class="howwework" id="offers">
-      <div class="container">
-        <span class="section-label">How We'll Work Together</span>
-        <h2 class="section-title">Choose your<br/>engagement model</h2>
-        <div class="howwework__grid">
-          <div class="offer-card offer-card--featured">
-            <div class="offer-card__badge">Most Popular</div>
-            <h3 class="offer-card__title">Structured Bootcamp</h3>
-            <p class="offer-card__desc">An intensive 8-week program where we rebuild your business from the ground up — strategy, systems, offer and team.</p>
-            <ul class="offer-card__list">
-              <li>✓ 8 weeks of intensive work</li>
-              <li>✓ Weekly 1:1 strategy sessions</li>
-              <li>✓ Full business audit</li>
-              <li>✓ Custom operating playbook</li>
-              <li>✓ 30-day post-program support</li>
-            </ul>
-            <a href="#contact" class="btn btn--primary">Apply Now</a>
-          </div>
-          <div class="offer-card">
-            <h3 class="offer-card__title">Directory Call</h3>
-            <p class="offer-card__desc">A focused 90-minute strategy session to diagnose your biggest bottleneck and create an action plan.</p>
-            <ul class="offer-card__list">
-              <li>✓ 90-minute deep dive</li>
-              <li>✓ Business bottleneck analysis</li>
-              <li>✓ Prioritized action plan</li>
-              <li>✓ Recording + summary doc</li>
-            </ul>
-            <a href="#contact" class="btn btn--outline">Book a Session</a>
-          </div>
+    </div>
+  </section>
+  <section class="ct" id="contact">
+    <div class="container">
+      <div class="ct-grid">
+        <div class="ct-l">
+          <span class="tag">Get In Touch</span>
+          <h2 class="h2">Ready to build<br><span class="gr">structure?</span></h2>
+          <p>Start with our AI Screening to get an instant diagnosis of your business. Then we'll meet to review the results and map your 90-day roadmap together.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- PROOFS -->
-    <section class="proofs" id="proofs">
-      <div class="container">
-        <span class="section-label">Proofs</span>
-        <h2 class="section-title">Real results,<br/>real clients</h2>
-        <div class="proofs__grid">
-          <div class="proof-card">
-            <div class="proof-card__header">
-              <div class="proof-card__avatar">TG</div>
-              <div>
-                <strong>Tina G.</strong>
-                <span>Founder, Operations CEO $2.5M</span>
-              </div>
-            </div>
-            <p>"Antony helped us restructure our entire operations in 6 weeks. Revenue went up 40% in the first quarter after implementation."</p>
+        <form class="ct-f" id="ctf" novalidate>
+          <div class="fr">
+            <div class="fg"><label for="fn">Your Name</label><input type="text" id="fn" name="name" placeholder="John Smith" required></div>
+            <div class="fg"><label for="fe">Email</label><input type="email" id="fe" name="email" placeholder="john@company.com" required></div>
           </div>
-          <div class="proof-card">
-            <div class="proof-card__header">
-              <div class="proof-card__avatar">MK</div>
-              <div>
-                <strong>Mark K.</strong>
-                <span>CEO, Tech Startup</span>
-              </div>
-            </div>
-            <p>"The framework gave us clarity we never had before. We closed our first $1M deal 3 months after the bootcamp."</p>
-          </div>
-          <div class="proof-card">
-            <div class="proof-card__header">
-              <div class="proof-card__avatar">SR</div>
-              <div>
-                <strong>Sofia R.</strong>
-                <span>Creative Director</span>
-              </div>
-            </div>
-            <p>"I finally stopped being the bottleneck in my own business. The systems Antony built allowed me to take a real vacation."</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NUMBERS THAT MATTER -->
-    <section class="numbers" id="numbers">
-      <div class="container">
-        <span class="section-label">Numbers That Matter</span>
-        <div class="numbers__grid">
-          <div class="number-card">
-            <span class="number-card__num">20+</span>
-            <span class="number-card__label">Years in business</span>
-          </div>
-          <div class="number-card">
-            <span class="number-card__num">100+</span>
-            <span class="number-card__label">Clients helped</span>
-          </div>
-          <div class="number-card">
-            <span class="number-card__num">$1M+</span>
-            <span class="number-card__label">Revenue generated</span>
-          </div>
-          <div class="number-card">
-            <span class="number-card__num">90</span>
-            <span class="number-card__label">Day avg. transformation</span>
-          </div>
-          <div class="number-card">
-            <span class="number-card__num">$1.5–2M</span>
-            <span class="number-card__label">Client deals closed</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about__grid">
-          <div class="about__photo-wrap">
-            <img src="images/about-photo.jpg" alt="Antony Lysak" class="about__photo" onerror="this.style.display='none'"/>
-            <div class="about__photo-placeholder">AL</div>
-          </div>
-          <div class="about__content">
-            <span class="section-label">About</span>
-            <h2 class="section-title">Antony Lysak</h2>
-            <p class="about__subtitle">Business architect with 20+ years of experience scaling companies from chaos to clarity.</p>
-            <p>I've built and scaled businesses across multiple industries — from tech startups to creative agencies. I know what it takes to go from founder-mode to CEO-mode, and I've helped over 100 companies make that transition.</p>
-            <p>My approach is simple: diagnose the real problem, build the right systems, and execute with precision. No fluff, no generic advice — just a clear path forward.</p>
-            <div class="about__socials">
-              <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-              <a href="#" class="social-link" aria-label="Telegram">TG</a>
-              <a href="#" class="social-link" aria-label="Instagram">IG</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq" id="faq">
-      <div class="container">
-        <span class="section-label">FAQ</span>
-        <h2 class="section-title">Frequently asked<br/>questions</h2>
-        <div class="faq__list">
-          <div class="faq-item">
-            <button class="faq-item__q">Who is this for? <span class="faq-item__icon">+</span></button>
-            <div class="faq-item__a"><p>This is for founders, CEOs and business owners who are generating revenue but feel stuck — overwhelmed by operations, unclear on strategy, or unable to scale past their current ceiling.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-item__q">How long does the program take? <span class="faq-item__icon">+</span></button>
-            <div class="faq-item__a"><p>The Structured Bootcamp runs for 8 weeks with weekly sessions. The Directory Call is a one-time 90-minute session. Both include follow-up materials and documentation.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-item__q">What results can I expect? <span class="faq-item__icon">+</span></button>
-            <div class="faq-item__a"><p>Most clients see clarity within the first 2 weeks and measurable revenue impact within 90 days. Results vary based on implementation, but our average client sees 30–50% operational efficiency gains.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-item__q">How do we work together? <span class="faq-item__icon">+</span></button>
-            <div class="faq-item__a"><p>Everything is remote — video calls via Zoom, async communication via Telegram. You'll get access to shared docs, frameworks, and recordings of all sessions.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-item__q">What's the investment? <span class="faq-item__icon">+</span></button>
-            <div class="faq-item__a"><p>Investment varies based on the engagement model and scope. Book a free 20-minute screening call to get a proposal tailored to your situation.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <span class="section-label">Get In Touch</span>
-        <h2 class="section-title">Ready to build<br/>structure?</h2>
-        <form class="contact__form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="John Smith" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="john@company.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="company">Company / Role</label>
-            <input type="text" id="company" name="company" placeholder="CEO at Startup Inc." />
-          </div>
-          <div class="form-group">
-            <label for="message">What's your biggest challenge right now?</label>
-            <textarea id="message" name="message" rows="4" placeholder="Describe your situation..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--full">Book a Free Screening →</button>
+          <div class="fg"><label for="fc">Company / Role</label><input type="text" id="fc" name="company" placeholder="CEO at Startup Inc."></div>
+          <div class="fg"><label for="fm">What's your biggest challenge right now?</label><textarea id="fm" name="message" rows="4" placeholder="Describe your situation..." required></textarea></div>
+          <button type="submit" class="btn btn-p btn-f">Start AI Screening →</button>
         </form>
       </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__top">
-        <a href="#" class="logo">AL<span class="logo-dot">.</span></a>
-        <nav class="footer__nav">
-          <a href="#home">Home</a>
-          <a href="#offers">Top Offers</a>
-          <a href="#framework">Points</a>
-          <a href="#about">About</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div class="footer__socials">
-          <a href="#" class="social-link">in</a>
-          <a href="#" class="social-link">TG</a>
-          <a href="#" class="social-link">IG</a>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>© <span id="year"></span> Antony Lysak. All rights reserved.</p>
-        <p>Structure instead of chaos.</p>
-      </div>
     </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  </section>
+</main>
+<div id="ty">
+  <div class="ty-ck">✓</div>
+  <h2 class="ty-t">Screening confirmed</h2>
+  <p class="ty-s">You don't need to prepare anything. We'll work with what you already have.</p>
+</div>
+<footer class="ft" id="footer">
+  <div class="ft-in">
+    <div class="ft-top">
+      <a href="#hero" class="logo">A<span class="lo">L</span></a>
+      <nav class="ft-nav"><a href="#method">Method</a><a href="#services">Services</a><a href="#proofs">Proofs</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+      <div class="ft-soc"><a href="#" class="sb">in</a><a href="#" class="sb">TG</a><a href="#" class="sb">IG</a></div>
+    </div>
+    <div class="ft-bot"><p>© <span id="yr"></span> Antony Lysak. All rights reserved.</p><p>Structure instead of chaos.</p></div>
+  </div>
+</footer>
+<script>
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  const hdr=document.getElementById('header');
+  window.addEventListener('scroll',()=>hdr.classList.toggle('sc',window.scrollY>40));
+  const mob=document.getElementById('mob');
+  document.getElementById('brgBtn').addEventListener('click',()=>{mob.classList.add('open');document.body.style.overflow='hidden'});
+  document.getElementById('mobX').addEventListener('click',closeMob);
+  function closeMob(){mob.classList.remove('open');document.body.style.overflow=''}
+  document.querySelectorAll('.fq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.closest('.fq-i'),o=i.classList.contains('open');document.querySelectorAll('.fq-i').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open')})});
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;document.querySelectorAll('.nav a,.mob a').forEach(l=>{l.classList.remove('act');if(l.getAttribute('href')==='#'+id)l.classList.add('act')})}})},{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+  document.getElementById('ctf').addEventListener('submit',e=>{e.preventDefault();document.getElementById('mc').style.display='none';document.getElementById('footer').style.display='none';document.getElementById('ty').classList.add('show');window.scrollTo({top:0,behavior:'smooth'})});
+</script>
 </body>
 </html>
