@@ -1,0 +1,5 @@
+.numbers { background: var(--color-bg-card); padding: 4rem 0; }
+.numbers__grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+.number-card { text-align: center; }
+.number-card__num { display: block; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--color-accent); line-height: 1; margin-bottom: 0.5rem; }
+.number-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
